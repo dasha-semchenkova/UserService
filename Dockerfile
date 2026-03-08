@@ -5,7 +5,7 @@ COPY . .
 RUN ./gradlew clean build -x test
 
 # Runtime stage
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Copy the built JAR from builder stage
