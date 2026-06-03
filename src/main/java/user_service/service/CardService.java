@@ -1,13 +1,13 @@
 package user_service.service;
 
-import user_service.dto.CardDto;
-import user_service.entity.Card;
-import user_service.mapper.CardMapper;
-import user_service.repository.CardRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import user_service.dto.CardDto;
+import user_service.entity.Card;
+import user_service.mapper.CardMapper;
+import user_service.repository.CardRepository;
 
 import java.util.List;
 
@@ -29,6 +29,12 @@ public class CardService {
         return cardRepository.findById(id)
                 .map(cardMapper::toDto)
                 .orElseThrow(() -> new EntityNotFoundException(String.format("There is no card with id %d", id)));
+    }
+
+    public List<CardDto> getCardsByUserId(Long userId) {
+        return cardRepository.findAllByUserId(userId).stream()
+                .map(cardMapper::toDto)
+                .toList();
     }
 
     @Transactional(readOnly = true)
