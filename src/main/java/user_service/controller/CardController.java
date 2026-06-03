@@ -1,7 +1,5 @@
 package user_service.controller;
 
-import user_service.dto.CardDto;
-import user_service.service.CardService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -18,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import user_service.dto.CardDto;
+import user_service.service.CardService;
 
 import java.util.List;
 
@@ -36,6 +36,11 @@ public class CardController {
     @GetMapping("/{id}")
     public ResponseEntity<CardDto> getCardById(@PathVariable @NotNull @Positive Long id) {
         return ResponseEntity.ok(cardService.getCardById(id));
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<CardDto>> getCardsByUserId(@PathVariable @NotNull @Positive Long userId) {
+        return ResponseEntity.ok(cardService.getCardsByUserId(userId));
     }
 
     @PostMapping("/list")

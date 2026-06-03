@@ -1,19 +1,17 @@
 package user_service.service;
 
-import user_service.dto.UserDto;
-import user_service.entity.User;
-import user_service.exception.UserAlreadyExistsException;
-import user_service.mapper.UserMapper;
-import user_service.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import user_service.dto.UserDto;
+import user_service.entity.User;
+import user_service.exception.UserAlreadyExistsException;
+import user_service.mapper.UserMapper;
+import user_service.repository.UserRepository;
 
 import java.util.List;
 
